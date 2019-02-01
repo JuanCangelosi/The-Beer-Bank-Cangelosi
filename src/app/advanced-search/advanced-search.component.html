@@ -1,0 +1,49 @@
+<mat-card class="card-container">
+  <h1> Advanced Search </h1>
+  <h3> Filter By: </h3>
+  <form class="search-form" [formGroup]="searchForm" (submit)="onSubmit($event)">
+    <div fxLayout="row" fxLayoutAlign="space-between">
+      <mat-form-field>
+        <input matInput placeholder="Min IBU" formControlName="minIbu">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Max IBU" formControlName="maxIbu">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Min ABV" formControlName="minAbv">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Max ABV" formControlName="maxAbv">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Min EBC" formControlName="minEbc">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Max EBC" formControlName="maxEbc">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="pickerBefore" placeholder="Brewed Before" formControlName="brewedBefore">
+        <mat-datepicker-toggle matSuffix [for]="pickerBefore"></mat-datepicker-toggle>
+        <mat-datepicker #pickerBefore startView="multi-year" (yearSelected)="chosenYearHandler('brewedBefore',$event)"
+          (monthSelected)="chosenMonthHandler('brewedBefore',$event, pickerBefore)" panelClass="example-month-picker"></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput [matDatepicker]="pickerAfter" placeholder="Brewed After" formControlName="brewedAfter">
+        <mat-datepicker-toggle matSuffix [for]="pickerAfter"></mat-datepicker-toggle>
+        <mat-datepicker #pickerAfter startView="multi-year" (yearSelected)="chosenYearHandler('brewedAfter',$event)"
+          (monthSelected)="chosenMonthHandler('brewedAfter',$event, pickerAfter)" panelClass="example-month-picker"></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button type="submit" color="primary">Search</button>
+  </form>
+</mat-card>
+<div class="grid-container">
+  <div class="example-loading-shade" *ngIf="showLoading  && !(beers | async)">
+      <mat-spinner></mat-spinner>
+  </div>
+  <mat-grid-list [cols]="breakpoint" [rowHeight]="rowHeight">
+    <mat-grid-tile *ngFor="let beer of beers | async">
+      <app-beer-card [beer]="beer"></app-beer-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

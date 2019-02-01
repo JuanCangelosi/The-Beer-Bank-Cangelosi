@@ -1,0 +1,7 @@
+<div class="grid-container">
+  <mat-grid-list [cols]="breakpoint" [rowHeight]="rowHeight">
+    <mat-grid-tile *ngFor="let beer of beers">
+      <app-beer-card [beer]="beer"></app-beer-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

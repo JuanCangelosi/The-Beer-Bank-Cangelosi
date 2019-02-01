@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="title-center">
+  <mat-toolbar-row>
+    <h1 class="title-center">The Beer Bank</h1>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <p class="title-center">Find your favourite beer here!</p>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+    <form class="search-form  title-center">
+      <mat-form-field class="search-box">
+        <input matInput placeholder="Search" aria-label="Search" [matAutocomplete]="auto" [formControl]="searchCtrl">
+        <mat-hint align="start" (click)="advancedSearch()">Advanced Search</mat-hint>
+        <button mat-button matSuffix mat-icon-button aria-label="search-icon">
+          <mat-icon>search</mat-icon>
+        </button>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let beer of searchBeers" [value]="beer.name">
+            <span>{{beer.name}}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </form>
+  </mat-toolbar-row>
+  <mat-toolbar-row>
+  </mat-toolbar-row>
+</mat-toolbar>

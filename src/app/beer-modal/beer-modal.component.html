@@ -1,0 +1,53 @@
+<div mat-dialog-title>
+  <div class="flex-spacer"></div>
+  <button mat-icon-button class="close-button" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content>
+  <div class="flex-card">
+    <div class="image-row">
+      <img alt="Photo of beer" mat-card-lg-image [src]="beer.image_url">
+    </div>
+    <div class="info-row">
+      <h3 class="beer-title">{{beer.name}}</h3>
+      <p class="beer-tagline">
+        {{beer.tagline}}
+      </p>
+      <hr>
+      <p>
+        <b>IBU: </b>{{beer.ibu}}&nbsp;&nbsp;
+        <b>ABV: </b>{{beer.abv}}%&nbsp;&nbsp;
+        <b>EBC: </b>{{beer.ebc}}&nbsp;&nbsp;
+      </p>
+      <p>
+        {{beer.description}}
+      </p>
+
+      <b>Best served with:</b>
+      <ul>
+        <li *ngFor="let pairing of beer.food_pairing">
+          {{pairing}}
+        </li>
+      </ul>
+    </div>
+  </div>
+  <!-- TODO: Improve css, it doesnt look all too well -->
+  <div class="column-recomended">
+    <h3 class="beer-title">You may also like</h3>
+    <div class="grid-container">
+      <mat-grid-list [cols]="3" rowHeight="200px">
+        <mat-grid-tile *ngFor="let randomBeer of randomBeers">
+          <mat-card class="recommended-card">
+            <mat-card-header>
+              <img alt="Photo of beer" class="mat-card-image" mat-card-sm-image [src]="randomBeer.image_url">
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content">
+              <h5 class="beer-title">{{randomBeer.name}}</h5>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>

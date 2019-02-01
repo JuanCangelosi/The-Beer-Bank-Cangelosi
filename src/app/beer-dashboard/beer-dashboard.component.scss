@@ -1,0 +1,17 @@
+.example-loading-shade {
+    background: rgba(0, 0, 0, 0.15);
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .search-results {
+    height: 20rem;
+    overflow: scroll;
+  }
+
+.end-indicator {
+  color:#f79528;
+  text-align: center
+}

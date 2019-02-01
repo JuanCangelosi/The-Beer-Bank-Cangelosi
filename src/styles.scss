@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.mat-toolbar.mat-primary {
+    background: #f79528;
+    color: #fff;
+}
+
+.beer-title {
+    color:#f79528;
+    margin-bottom: 0;
+}
+
+.beer-tagline {
+    color: #bcc3d1;
+    margin-top: 0;
+}
+
+.grid-container {
+    margin: 20px;
+    position: relative;
+  }
+  
+  
+  @media (min-width: 1282px) {
+    .grid-container {
+      margin-left: 200px;
+      margin-right: 200px;
+    }
+  }
+
+  .flex-spacer {
+    flex-grow: 1;
+  }
